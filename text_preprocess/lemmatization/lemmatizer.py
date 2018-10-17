@@ -3,6 +3,15 @@ from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
 
+# Equivalences between the first character of an nltk part-of-speech tag and wordnet POS tag.
+nltk_wordnet_pos_dict = {
+    'J': wordnet.ADJ,
+    'N': wordnet.NOUN,
+    'V': wordnet.VERB,
+    'R': wordnet.ADV
+}
+
+
 def wordnet_pos(tag):
     """
     Transforms nltk part-of-speech tag strings to wordnet part-of-speech tag string.
@@ -11,14 +20,7 @@ def wordnet_pos(tag):
     :return: the corresponding wordnet tag
     :type: wordnet part-of-speech tag string
     """
-    if tag.startswith('J'):
-        return wordnet.ADJ
-    elif tag.startswith('V'):
-        return wordnet.VERB
-    elif tag.startswith('R'):
-        return wordnet.ADV
-    else:
-        return wordnet.NOUN
+    return getattr(nltk_wordnet_pos_dict, tag[0], nltk_wordnet_pos_dict['N']) # 'N' is the wordnet default
 
 
 def transform(sentence):
