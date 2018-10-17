@@ -1,4 +1,4 @@
-CyHunspell==1.2.1
+CyHunspell==1.2.1 # import as hunspell
 gensim==3.3.0
 nltk==3.3
 numpy==1.15.1

@@ -1,60 +1,83 @@
-from hunspell import Hunspell
 import re
 
-punctuation = ".,!?;"
-hunspell_data_dir='/home/fcoclavero/Dropbox/Workspace/Python/Tesis/experiments/dictionaries/dictionaries/en-US/'
+from hunspell import Hunspell
+from nltk import word_tokenize
+
+
+allowed_punctuation_marks = '.,!?;'
+hunspell_data_dir = '/home/fcoclavero/Dropbox/Workspace/Python/Tesis/experiments/dictionaries/dictionaries/en-US/'
+
 
 class SpellCheck:
+    """
+    Class for managing spell checking using Hunspell.
+    """
+
     def __init__(self):
+        """
+        Constructor method. Declares and creates a new Hunspell object.
+        """
+        self.hunspell = None
         self.refresh_dict()
 
-    def suggest(self, word):
-        return self.h.suggest(word)
-        
-    def correct_word(self, word):
-        if word in punctuation:
-            return word
-        suggetions = self.h.suggest(word)
-        if suggetions and not self.contains(word):
-            return suggetions[0]
-        return word
-        
-    def contains(self, word):
-        return self.h.spell(word)
 
-    def correct_text(self, text):
-        result_str = []
-        tokens = re.findall(r"[\w']+|[.,!?;]", text)
-        list_of_words = [self.correct_word(word) for word in tokens]
-        for wd in list_of_words:
-            if wd not in punctuation:
-                result_str.append(" ")
-            result_str.append(wd)
-        try:
-            if result_str[0] is " ":
-                return "".join(result_str[1:])
-        except IndexError:
-            pass
-        return "".join(result_str)
-        
-    def add_word(self, word, refresh=True):
-        if not self.contains(word):
-            with open(hunspell_data_dir + 'index.dic', 'a') as fp:
-                fp.write(word + "\n")
-            if refresh:
-                self.refresh_dict()
-
-    def remove_word(self, word, refresh=True):
-            with open(hunspell_data_dir + 'index.dic', 'r', encoding='utf8') as fp:
-                lines = fp.readlines()
-            with open(hunspell_data_dir + 'index.dic', 'w', encoding='utf8') as fp:
-                for line in lines:
-                    if line!=word+"\n":
-                        fp.write(line)
-            if refresh:
-                self.refresh_dict()
-    
     def refresh_dict(self):
-        self.h = Hunspell('index', hunspell_data_dir=hunspell_data_dir)
+        """
+        Create a new Hunspell object from the specified dictionary file.
+        """
+        self.hunspell = Hunspell('index', hunspell_data_dir=hunspell_data_dir)
 
-   
+
+    @staticmethod
+    def is_punctuation_mark(word):
+        """
+        Checks if the given word corresponds to one of the allowed punctuation marks.
+        :param word: a string with a single word
+        :type: string
+        :return: boolean indicating if the given word is an allowed punctuation mark
+        :type: boolean
+        """
+        return bool(re.match(r'[%s]' % allowed_punctuation_marks, word))
+
+
+    def is_correctly_spelled(self, word):
+        """
+        Checks if the given word is correctly spelled.
+        :param word: a string with a single word
+        :type: string
+        :return: boolean indicating if the spelling of the word is correct
+        :type: boolean
+        """
+        return self.hunspell.spell(word)
+
+
+    def suggest(self, word):
+        """
+        Suggest similar and correctly spelled alternatives for the given string.
+        :param word: a string with a single word
+        :type: string
+        :return: a list of suggestions
+        :type: list<string>
+        """
+        return self.hunspell.suggest(word)
+
+
+    def fix(self, word):
+        """
+        Fixes the spelling of the given word.
+        :param word: a string with a single word
+        :type: string
+        :return: the same word if correctly spelled or a punctuation mark, otherwise the top Hunspell suggestion.
+        """
+        return word if self.is_punctuation_mark(word) or self.is_correctly_spelled(word) else self.suggest(word)[0]
+
+
+    def fix_text(self, text):
+        """
+        Fixes the spelling of a multi-worded phrase.
+        :param text: the phrase string
+        :type: string
+        :return: the same phrase, with the spelling of each word fixed.
+        """
+        fixed_text = ' '.join([self.fix(word) for word in word_tokenize(text)])
+        return re.sub(r' ([%s])' % allowed_punctuation_marks, r'\1', fixed_text) # remove spaces preceding punctuation

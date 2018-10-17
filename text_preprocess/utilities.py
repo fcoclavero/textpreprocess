@@ -59,4 +59,4 @@ class Preprocess:
         Intenta arreglar la ortografía del texto.
         """
 
-        return self.h.correct_text(text)
+        return self.h.fix_text(text)
