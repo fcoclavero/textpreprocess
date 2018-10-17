@@ -1,8 +1,8 @@
 import json
 
-from ..symbol_cleaner import alphanumeric_filter
-from ..spaces_cleaner import clean_spaces
-from ..decapitalizer import decapitalizer
+from text_preprocess.symbol_cleaner import alphanumeric_filter
+from text_preprocess.spaces_cleaner import clean_spaces
+from text_preprocess.decapitalizer import decapitalizer
 from pattern.es import parsetree
 
 stopwords_file_name = "text_preprocess/stop_words/stopwords-es-aggregated.json"

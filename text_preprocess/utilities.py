@@ -1,12 +1,12 @@
 from functools import reduce
 
-from .lemmatization.lemmatizer import transform
-from .stop_words.stopwords_remover import clean as swclean, clean_by_pos
+from text_preprocess.lemmatizer import transform
+from text_preprocess.stopwords_remover import clean as swclean, clean_by_pos
 from .symbol_cleaner import alphanumeric_filter
 from .spaces_cleaner import clean_spaces
 from .decapitalizer import decapitalizer
 from .dirt_cleaner import remove_n_dot
-from .spell_check.spell_check import SpellCheck
+from text_preprocess.spell_check import SpellCheck
 
 
 class Preprocess:

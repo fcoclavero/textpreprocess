@@ -1,6 +1,6 @@
 # Submodules
 dictionaries/
-lemmas/
+text_preprocess/lemmas/
 
 # Word vector .vec files
 *.vec
