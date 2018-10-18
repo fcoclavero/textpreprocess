@@ -1,3 +1,8 @@
+__author__ = ["Francisco Clavero", "Vicente Oyanedel"]
+__email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
+__status__ = "Prototype"
+
+
 import re
 
 from hunspell import Hunspell
@@ -5,12 +10,13 @@ from nltk import word_tokenize
 
 
 allowed_punctuation_marks = '.,!?;'
-hunspell_data_dir = '/home/fcoclavero/Dropbox/Workspace/Python/Tesis/experiments/dictionaries/dictionaries/en-US/'
+hunspell_data_dir = '/home/fcoclavero/Dropbox/Workspace/Python/Tesis/experiments/text_preprocess/dictionaries/dictionaries/en-US/'
 
 
-class SpellCheck:
+class SpellChecker:
     """
-    Class for managing spell checking using Hunspell.
+    Class for managing spell checking using Hunspell. Implemented as a class, as multiple instances of a SpellChecker
+    might be used to maintain different dictionaries simultaneously (for example adding custom words).
     """
 
     def __init__(self):
@@ -81,3 +87,17 @@ class SpellCheck:
         """
         fixed_text = ' '.join([self.fix(word) for word in word_tokenize(text)])
         return re.sub(r' ([%s])' % allowed_punctuation_marks, r'\1', fixed_text) # remove spaces preceding punctuation
+
+
+checker = SpellChecker()
+
+
+def fix_spelling(text):
+    """
+    Tries to correct the spelling of the given text.
+    :param text: the text to spell-checked
+    :type: string
+    :return: spell-checked text
+    :type: string
+    """
+    return checker.fix_text(text)

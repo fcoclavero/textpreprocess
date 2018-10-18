@@ -1,3 +1,8 @@
+__author__ = ["Francisco Clavero", "Vicente Oyanedel"]
+__email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
+__status__ = "Prototype"
+
+
 from nltk import pos_tag, word_tokenize
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
@@ -23,7 +28,7 @@ def wordnet_pos(tag):
     return getattr(nltk_wordnet_pos_dict, tag[0], nltk_wordnet_pos_dict['N']) # 'N' is the wordnet default
 
 
-def transform(sentence):
+def lemmatize(sentence):
     """
     Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
     :param sentence: the text to be lemmatized

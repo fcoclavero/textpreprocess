@@ -1,4 +1,9 @@
-def case_cleaner(text):
+__author__ = ["Francisco Clavero", "Vicente Oyanedel"]
+__email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
+__status__ = "Prototype"
+
+
+def clean_cases(text):
     """
     Makes text all lowercase.
     :param text: the text to be converted to all lowercase.
