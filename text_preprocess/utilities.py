@@ -3,7 +3,7 @@ from functools import reduce
 from text_preprocess.lemmatizer import transform
 from text_preprocess.stopwords_remover import clean as swclean, clean_by_pos
 from .symbol_cleaner import symbol_cleaner
-from .spaces_cleaner import clean_spaces
+from .spaces_cleaner import spaces_cleaner
 from .case_cleaner import case_cleaner
 from text_preprocess.spell_check import SpellCheck
 
@@ -22,7 +22,7 @@ class Preprocess:
         @DeprecationWarning
         Aplica todos los preprocesadores.
         """
-        return Preprocess.__limpiar(text, clean_spaces, symbol_cleaner, case_cleaner, Preprocess().fix_spelling, swclean, transform)
+        return Preprocess.__limpiar(text, spaces_cleaner, symbol_cleaner, case_cleaner, Preprocess().fix_spelling, swclean, transform)
 
     @staticmethod
     def full_clean_pos(text):
@@ -30,7 +30,7 @@ class Preprocess:
         @DeprecationWarning
         Aplica todos los preprocesadores, se filtra por POS-tagging en vez de StopWords.
         """
-        return Preprocess.__limpiar(text, clean_spaces, symbol_cleaner, case_cleaner,
+        return Preprocess.__limpiar(text, spaces_cleaner, symbol_cleaner, case_cleaner,
                                     Preprocess().fix_spelling, clean_by_pos, transform)
 
     @staticmethod
@@ -38,7 +38,7 @@ class Preprocess:
         """
         Aplica los procesadores que no modifican la sintaxis y semantica del texto.
         """
-        return Preprocess.__limpiar(text, clean_spaces, symbol_cleaner, case_cleaner,
+        return Preprocess.__limpiar(text, spaces_cleaner, symbol_cleaner, case_cleaner,
                                     Preprocess().fix_spelling)
 
     def lemmatize(self, text):

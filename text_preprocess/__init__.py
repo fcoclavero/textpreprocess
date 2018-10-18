@@ -1,2 +1,3 @@
-from . import case_cleaner
-from . import symbol_cleaner
+from text_preprocess.case_cleaner import case_cleaner
+from text_preprocess.symbol_cleaner import symbol_cleaner
+from text_preprocess.spaces_cleaner import spaces_cleaner

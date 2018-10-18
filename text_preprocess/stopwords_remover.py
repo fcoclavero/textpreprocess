@@ -1,7 +1,7 @@
 import json
 
 from text_preprocess.symbol_cleaner import symbol_cleaner
-from text_preprocess.spaces_cleaner import clean_spaces
+from text_preprocess.spaces_cleaner import spaces_cleaner
 from text_preprocess.decapitalizer import case_cleaner
 from pattern.es import parsetree
 
@@ -70,7 +70,7 @@ def clean(text):
 
     text = case_cleaner(
         symbol_cleaner(
-            clean_spaces(
+            spaces_cleaner(
                     text)))
     with open(stopwords_file_name) as fp:
         raw_sws = json.load(fp)
@@ -80,7 +80,7 @@ def clean(text):
         stopwords.append(
                 case_cleaner(
                     symbol_cleaner(
-                        clean_spaces(
+                        spaces_cleaner(
                                 stopword))))
     out_str_list = []
     for word in text.split(" "):
