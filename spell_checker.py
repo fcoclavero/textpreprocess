@@ -1,4 +1,4 @@
-__author__ = ["Francisco Clavero", "Vicente Oyanedel"]
+__author__ = ["Francisco Clavero", "Vicente Oyanedel M."]
 __email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
 __status__ = "Prototype"
 
@@ -6,11 +6,11 @@ __status__ = "Prototype"
 import re
 
 from hunspell import Hunspell
-from nltk import word_tokenize
+from nltk import edit_distance, word_tokenize
 
 
 allowed_punctuation_marks = '.,!?;'
-hunspell_data_dir = ''
+hunspell_data_dir = '/home/fcoclavero/Dropbox/Workspace/Python/Tesis/dictionaries/dictionaries/en-US/'
 
 
 class SpellChecker:
@@ -59,13 +59,15 @@ class SpellChecker:
 
     def suggest(self, word):
         """
-        Suggest similar and correctly spelled alternatives for the given string.
+        Suggest similar and correctly spelled alternatives for the given string. Orders Hunspell suggestions by
+        edit distance.
         :param word: a string with a single word
         :type: string
         :return: a list of suggestions
         :type: list<string>
         """
-        return self.hunspell.suggest(word)
+        suggestions = self.hunspell.suggest(word)
+        return sorted(suggestions, key = lambda suggestion: edit_distance(word, suggestion))
 
 
     def fix(self, word):

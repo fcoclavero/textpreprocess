@@ -1,4 +1,4 @@
-__author__ = ["Francisco Clavero", "Vicente Oyanedel"]
+__author__ = ["Francisco Clavero", "Vicente Oyanedel M."]
 __email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
 __status__ = "Prototype"
 
