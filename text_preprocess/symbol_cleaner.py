@@ -1,16 +1,15 @@
-import string
+import re, string
 
-def alphanumeric_filter(text):
+
+whitelist = string.ascii_letters + string.digits + ' ' # for spanish: + 'ñáéíóúüÑÁÉÍÓÚÜ'
+
+
+def symbol_cleaner(text):
     """
-    Filtra el texto dejando solo letras en español, digitos y espacios.
-    :param text:
-    :return:
+    Filters text, leaving only valid characters, digits and spaces.
+    :param text: the text to be filtered
+    :type: string
+    :return: the filtered text
+    :type: string
     """
-    whitelist = string.ascii_letters + string.digits + ' ' # for spanish: + ' ñáéíóúüÑÁÉÍÓÚÜ'
-    ret = ''.join(c for c in text if c in whitelist)
-    return ret
-
-
-if __name__ == '__main__':
-    print(alphanumeric_filter(" si te gustan la canciones de amor? Shalala__ te, gustan esos raros. # h%ola/\peiñados `n``uévos!!"))
-
+    return re.sub(r'[^%s]' % whitelist, '', text)

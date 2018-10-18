@@ -1,8 +1,8 @@
 import json
 
-from text_preprocess.symbol_cleaner import alphanumeric_filter
+from text_preprocess.symbol_cleaner import symbol_cleaner
 from text_preprocess.spaces_cleaner import clean_spaces
-from text_preprocess.decapitalizer import decapitalizer
+from text_preprocess.decapitalizer import case_cleaner
 from pattern.es import parsetree
 
 stopwords_file_name = "text_preprocess/stop_words/stopwords-es-aggregated.json"
@@ -68,8 +68,8 @@ def clean(text):
     :return:
     """
 
-    text = decapitalizer(
-        alphanumeric_filter(
+    text = case_cleaner(
+        symbol_cleaner(
             clean_spaces(
                     text)))
     with open(stopwords_file_name) as fp:
@@ -78,8 +78,8 @@ def clean(text):
     stopwords = []
     for stopword in raw_sws:
         stopwords.append(
-                decapitalizer(
-                    alphanumeric_filter(
+                case_cleaner(
+                    symbol_cleaner(
                         clean_spaces(
                                 stopword))))
     out_str_list = []
@@ -98,7 +98,7 @@ def clean_by_pos(text):
                 word = word_n_tag.string
                 tag = word_n_tag.part_of_speech
                 #print(word + tag)
-                word = alphanumeric_filter(word)
+                word = symbol_cleaner(word)
                 if 'NN' in tag or 'VB' in tag or 'RB' in tag or 'JJ' in tag:
                     new_text.append(word)
             new_text.append(".")
