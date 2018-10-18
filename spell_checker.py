@@ -10,7 +10,7 @@ from nltk import edit_distance, word_tokenize
 
 
 allowed_punctuation_marks = '.,!?;'
-hunspell_data_dir = '/home/fcoclavero/Dropbox/Workspace/Python/Tesis/dictionaries/dictionaries/en-US/'
+hunspell_data_dir = ''
 
 
 class SpellChecker:
