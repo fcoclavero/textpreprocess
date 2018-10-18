@@ -24,7 +24,7 @@ Avalable utilities:
 * `soft_clean`
 * `full_clean`
 
-To use spell checking functions, please provide a path to a directory containing dictionary files. [Here](https://github.com/wooorm/dictionaries) you can find a great collection of dictionaries.
+To use spell checking functions, please provide a path to a directory containing dictionary files in the `spell_checker.py` file. [Here](https://github.com/wooorm/dictionaries) you can find a great collection of dictionaries.
 
 Sample usage:
 
