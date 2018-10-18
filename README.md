@@ -29,7 +29,7 @@ Sample usage:
 ```python
 from text_preprocess import full_clean, soft_clean
 
-text = '   tis a bery :''{ñdirti text!  '
+text = '   thiss is a bery :''{ñdirti text!  '
 
 full_clean(text) # -> 'this very dirt text'
 
