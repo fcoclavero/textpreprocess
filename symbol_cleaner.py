@@ -18,3 +18,14 @@ def clean_symbols(text):
     :type: string
     """
     return re.sub(r'[^%s]' % whitelist, '', text)
+
+
+def clean_ndot(text):
+    """
+    Filter for special symbol in a specific dataset.
+    :param text: the text to be filtered
+    :type: string
+    :return: the filtered text
+    :type: string
+    """
+    return re.sub(' N.', '', text)

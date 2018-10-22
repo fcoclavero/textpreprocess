@@ -6,7 +6,7 @@ __status__ = "Prototype"
 from functools import reduce
 
 from text_preprocess.case_cleaner import clean_cases
-from text_preprocess.symbol_cleaner import clean_symbols
+from text_preprocess.symbol_cleaner import clean_symbols, clean_ndot
 from text_preprocess.spaces_cleaner import clean_spaces
 from text_preprocess.stopwords_remover import remove_stopwords
 from text_preprocess.lemmatizer import lemmatize
@@ -26,7 +26,7 @@ def full_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_cases, clean_symbols, clean_spaces, remove_stopwords, fix_spelling, lemmatize)
+    return clean(text, clean_ndot, clean_cases, clean_symbols, remove_stopwords, fix_spelling, lemmatize, clean_spaces)
 
 
 def soft_clean(text):
@@ -38,4 +38,4 @@ def soft_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_spaces, clean_symbols, clean_cases, fix_spelling)
+    return clean(text, clean_ndot, clean_spaces, clean_symbols, clean_cases, fix_spelling)
