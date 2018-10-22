@@ -13,8 +13,15 @@ from text_preprocess.lemmatizer import lemmatize
 from text_preprocess.spell_checker import fix_spelling
 
 
-def clean(texto, *correctores):
-    return reduce(lambda part, func: func(part), correctores, texto)
+def clean(text, *cleaners):
+    """
+    Cleans the given text using the provided cleaning functions.
+    :param text: the text to be cleaned
+    :type: string
+    :return: the clean text
+    :type: string
+    """
+    return reduce(lambda part, func: func(part), cleaners, text)
 
 
 def full_clean(text):
@@ -26,7 +33,7 @@ def full_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_ndot, clean_cases, clean_symbols, remove_stopwords, fix_spelling, lemmatize, clean_spaces)
+    return clean(text, clean_ndot, clean_cases, clean_symbols, clean_spaces, remove_stopwords, fix_spelling, lemmatize, clean_spaces)
 
 
 def soft_clean(text):
@@ -38,4 +45,4 @@ def soft_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_ndot, clean_spaces, clean_symbols, clean_cases, fix_spelling)
+    return clean(text, clean_ndot, clean_spaces, clean_symbols, clean_cases, fix_spelling, clean_spaces)
