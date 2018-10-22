@@ -34,4 +34,4 @@ def lemmatize(sentence):
     :return: lemmatized text
     :type: string
     """
-    return ' '.join([lemma(word) for word in word_tokenize(text)])
+    return ' '.join([lemma(word) for word in word_tokenize(sentence)])

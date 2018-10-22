@@ -28,4 +28,4 @@ def clean_ndot(text):
     :return: the filtered text
     :type: string
     """
-    return re.sub(' N.', '', text)
+    return re.sub(' N[.]', '', text)
