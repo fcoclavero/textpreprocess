@@ -3,29 +3,27 @@ __email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
 __status__ = "Prototype"
 
 
+#%%
+import json
+
 from nltk import pos_tag, word_tokenize
-from nltk.corpus import wordnet
-from nltk.stem import WordNetLemmatizer
 
 
-# Equivalences between the first character of an nltk part-of-speech tag and wordnet POS tag.
-nltk_wordnet_pos_dict = {
-    'J': wordnet.ADJ,
-    'N': wordnet.NOUN,
-    'V': wordnet.VERB,
-    'R': wordnet.ADV
-}
+# Load spanish lemmas dictionary
+lemmas_dict_path = ''
+lemmas = json.load(open(lemmas_dict_path, 'r', encoding='latin-1'))
 
 
-def wordnet_pos(tag):
+def lemma(word):
     """
-    Transforms nltk part-of-speech tag strings to wordnet part-of-speech tag string.
-    :param tag: nltk part-of-speech tag string
+    Transforms a given word to its lemmatized form, checking a lemma dictionary. If the word is
+    not included in the dictionary, the same word is returned.
+    :param word: string containing a single word
     :type: string
-    :return: the corresponding wordnet tag
-    :type: wordnet part-of-speech tag string
+    :return: the word's lemma
+    :type: string
     """
-    return getattr(nltk_wordnet_pos_dict, tag[0], nltk_wordnet_pos_dict['N']) # 'N' is the wordnet default
+    return lemmas[word] if word in lemmas else word
 
 
 def lemmatize(sentence):
@@ -36,4 +34,4 @@ def lemmatize(sentence):
     :return: lemmatized text
     :type: string
     """
-    return ' '.join([WordNetLemmatizer().lemmatize(word, wordnet_pos(tag)) for word, tag in pos_tag(word_tokenize(sentence))])
+    return ' '.join([lemma(word) for word in word_tokenize(text)])
