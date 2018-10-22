@@ -77,7 +77,7 @@ class SpellChecker:
         :type: string
         :return: the same word if correctly spelled or a punctuation mark, otherwise the top Hunspell suggestion.
         """
-        return word if self.is_punctuation_mark(word) or self.is_correctly_spelled(word) else self.suggest(word)[0]
+        return word if self.is_punctuation_mark(word) or not self.is_correctly_spelled(word) else self.suggest(word)[0]
 
 
     def fix_text(self, text):
