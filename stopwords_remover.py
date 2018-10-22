@@ -7,7 +7,7 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 
 
-stop_words = set(stopwords.words('english'))
+stop_words = set(stopwords.words('spanish'))
 
 
 def remove_stopwords(sentence):
