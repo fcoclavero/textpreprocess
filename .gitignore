@@ -110,3 +110,7 @@ ENV/
 
 # inteliJ
 .idea/
+
+# Data directories
+/dictionaries
+/lemmas
