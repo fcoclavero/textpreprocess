@@ -3,14 +3,13 @@ __email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
 __status__ = "Prototype"
 
 
-#%%
 import json
 
 from nltk import pos_tag, word_tokenize
 
 
 # Load spanish lemmas dictionary
-lemmas_dict_path = ''
+lemmas_dict_path = 'text_preprocess/lemmas/es.json'
 lemmas = json.load(open(lemmas_dict_path, 'r', encoding='latin-1'))
 
 
