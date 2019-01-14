@@ -3,25 +3,13 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from functools import reduce
-
-from case_cleaner import clean_cases
-from symbol_cleaner import clean_symbols
-from spaces_cleaner import clean_spaces
-from stopwords_remover import remove_stopwords
-from lemmatizer import lemmatize
-from spell_checker import fix_spelling
-
-
-def clean(text, *cleaners):
-    """
-    Cleans the given text using the provided cleaning functions.
-    :param text: the text to be cleaned
-    :type: string
-    :return: the clean text
-    :type: string
-    """
-    return reduce(lambda part, func: func(part), cleaners, text)
+from .common import clean
+from ..case_cleaner import clean_cases
+from ..symbol_cleaner import clean_symbols
+from ..spaces_cleaner import clean_spaces
+from ..stopword_remover.es import remove_stopwords
+from ..lemmatizer.es import lemmatize
+from ..spell_checker.es import fix_spelling
 
 
 def full_clean(text):
