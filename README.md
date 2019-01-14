@@ -24,9 +24,27 @@ Avalable utilities:
 * `soft_clean`
 * `full_clean`
 
-To use spell checking functions, please provide a path to a directory containing dictionary files in the `spell_checker.py` file. [Here](https://github.com/wooorm/dictionaries) you can find a great collection of dictionaries.
+Supported languages:
 
-Sample usage:
+1. Spanish
+2. English
+
+## Submodules
+
+Spell checking functions rely on dictionary files, placed by default on the `dictionaries` directory. [This collection](https://github.com/wooorm/dictionaries) of dictionaries was added as a git submodule for convenience.
+
+Lemmatization in Spanish relies on lemma dictionary files, placed by default on the `lemmas` directory. [This collection](https://github.com/fcoclavero/lemmas) was added as a git submodule for convenience. Feel free to propose your own!
+
+To clone all submodules, use the following commands.
+
+```bash
+git submodule init
+git submodule update
+```
+
+Further reference can be found [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
+
+## Sample usage
 
 ```python
 from text_preprocess import full_clean, soft_clean
