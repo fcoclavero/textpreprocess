@@ -56,4 +56,4 @@ full_clean(text) # -> 'this very dirt text'
 soft_clean(text) # -> 'this is a very dirty text'
 ```
 
-Special thanks to [Vicente Oyanedel M.](https://github.com/vichoko) for work on the original Spanish version of this package.
+Special thanks to [Vicente Oyanedel M.](https://github.com/vichoko) for work on the first version of this package.

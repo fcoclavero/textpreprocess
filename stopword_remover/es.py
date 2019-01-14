@@ -3,19 +3,17 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from nltk import word_tokenize
 from nltk.corpus import stopwords
 
-
-stop_words = set(stopwords.words('english'))
+from .common import remove_stopwords_set
 
 
 def remove_stopwords(sentence):
     """
     Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
-    :param sentence: the text to be lemmatized
+    :param sentence: the text from which stopwords will be removed
     :type: string
     :return: lemmatized text
     :type: string
     """
-    return ' '.join([w for w in word_tokenize(sentence) if not w in stop_words])
+    return remove_stopwords_set(sentence, set(stopwords.words('spanish')))

@@ -9,20 +9,18 @@ from hunspell import Hunspell
 from nltk import edit_distance, word_tokenize
 
 
-allowed_punctuation_marks = '.,!?;'
-hunspell_data_dir = ''
-
-
 class SpellChecker:
     """
     Class for managing spell checking using Hunspell. Implemented as a class, as multiple instances of a SpellChecker
     might be used to maintain different dictionaries simultaneously (for example adding custom words).
     """
 
-    def __init__(self):
+    def __init__(self, allowed_punctuation_marks, dictionary_directory):
         """
         Constructor method. Declares and creates a new Hunspell object.
         """
+        self.allowed_punctuation_marks = allowed_punctuation_marks
+        self.dictionary_directory = dictionary_directory
         self.hunspell = None
         self.refresh_dict()
 
@@ -31,11 +29,10 @@ class SpellChecker:
         """
         Create a new Hunspell object from the specified dictionary file.
         """
-        self.hunspell = Hunspell('index', hunspell_data_dir=hunspell_data_dir)
+        self.hunspell = Hunspell('index', hunspell_data_dir=self.dictionary_directory)
 
 
-    @staticmethod
-    def is_punctuation_mark(word):
+    def is_punctuation_mark(self, word):
         """
         Checks if the given word corresponds to one of the allowed punctuation marks.
         :param word: a string with a single word
@@ -43,7 +40,7 @@ class SpellChecker:
         :return: boolean indicating if the given word is an allowed punctuation mark
         :type: boolean
         """
-        return bool(re.match(r'[%s]' % allowed_punctuation_marks, word))
+        return bool(re.match(r'[%s]' % self.allowed_punctuation_marks, word))
 
 
     def is_correctly_spelled(self, word):
@@ -88,18 +85,4 @@ class SpellChecker:
         :return: the same phrase, with the spelling of each word fixed.
         """
         fixed_text = ' '.join([self.fix(word) for word in word_tokenize(text)])
-        return re.sub(r' ([%s])' % allowed_punctuation_marks, r'\1', fixed_text) # remove spaces preceding punctuation
-
-
-checker = SpellChecker()
-
-
-def fix_spelling(text):
-    """
-    Tries to correct the spelling of the given text.
-    :param text: the text to spell-checked
-    :type: string
-    :return: spell-checked text
-    :type: string
-    """
-    return checker.fix_text(text)
+        return re.sub(r' ([%s])' % self.allowed_punctuation_marks, r'\1', fixed_text) # remove spaces preceding punctuation
