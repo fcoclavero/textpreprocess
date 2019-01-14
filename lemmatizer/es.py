@@ -5,13 +5,13 @@ __status__ = "Prototype"
 
 import json
 
-from nltk import pos_tag, word_tokenize
+from nltk import word_tokenize
 
 from ..settings import ES
 
 
 # Load spanish lemmas dictionary
-lemmas = json.load(open(ES.LEMMAS_PATH, 'r', encoding='latin-1'))
+lemmas = json.load(open(ES['LEMMAS_PATH'], 'r', encoding='latin-1'))
 
 
 def lemma(word):

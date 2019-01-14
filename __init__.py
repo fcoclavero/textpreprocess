@@ -1,7 +1,7 @@
 from .case_cleaner import clean_cases
 from .symbol_cleaner import clean_symbols
 from .spaces_cleaner import clean_spaces
-from .stopwords_remover import remove_stopwords
-from .spell_checker import fix_spelling, SpellChecker
-from text_preprocess.lemmatizer import lemmatize
-from .compound_cleaners import clean, soft_clean, full_clean
+from .stopword_remover import en, es
+from .spell_checker import en, es
+from .lemmatizer import en, es
+from .compound_cleaners import en, es

@@ -1,2 +1,2 @@
-CyHunspell==1.3 # imported as hunspell
-nltk==3.4 # stopwords and wordnet corpus must be installed
+CyHunspell==1.2.1 # imported as hunspell
+nltk==3.3 # stopwords and wordnet corpus must be installed

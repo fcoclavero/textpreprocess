@@ -3,8 +3,6 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-import re
-
 from .common import SpellChecker
 from ..settings import EN
 
@@ -23,8 +21,8 @@ class EnglishSpellCheckerSingleton(SpellChecker):
         """
         if EnglishSpellCheckerSingleton.__instance is None:
             EnglishSpellCheckerSingleton.__instance = EnglishSpellCheckerSingleton(
-                allowed_punctuation_marks=EN.ALLOWED_PUNCTUATION_MARKS, 
-                dictionary_directory=EN.DICTIONARY_DIRECTORY
+                allowed_punctuation_marks=EN['ALLOWED_PUNCTUATION_MARKS'],
+                dictionary_directory=EN['DICTIONARY_DIRECTORY']
             )
         return EnglishSpellCheckerSingleton.__instance
 
