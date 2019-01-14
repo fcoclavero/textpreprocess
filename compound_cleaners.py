@@ -1,16 +1,16 @@
-__author__ = ["Francisco Clavero", "Vicente Oyanedel M."]
-__email__ = ["fcoclavero32@gmail.com", "vicenteoyanedel@gmail.com"]
+__author__ = ["Francisco Clavero"]
+__email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
 from functools import reduce
 
-from text_preprocess.case_cleaner import clean_cases
-from text_preprocess.symbol_cleaner import clean_symbols
-from text_preprocess.spaces_cleaner import clean_spaces
-from text_preprocess.stopwords_remover import remove_stopwords
-from text_preprocess.lemmatizer import lemmatize
-from text_preprocess.spell_checker import fix_spelling
+from case_cleaner import clean_cases
+from symbol_cleaner import clean_symbols
+from spaces_cleaner import clean_spaces
+from stopwords_remover import remove_stopwords
+from lemmatizer import lemmatize
+from spell_checker import fix_spelling
 
 
 def clean(texto, *correctores):
