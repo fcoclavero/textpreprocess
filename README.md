@@ -44,6 +44,14 @@ git submodule update
 
 Further reference can be found [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
+## Setup
+
+The `stopwords` and `wordnet` corpus for the `nltk` package must be installed. A helper script is provided for easy setup. Simply run:
+
+```bash
+python setup.py
+```
+
 ## Sample usage
 
 ```python
