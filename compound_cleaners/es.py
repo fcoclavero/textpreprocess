@@ -5,7 +5,7 @@ __status__ = "Prototype"
 
 from .common import clean
 from ..case_cleaner import clean_cases
-from ..symbol_cleaner import clean_invalid_symbols, clean_repeated_symbols
+from ..symbol_cleaner import clean_invalid_symbols, clean_repeated_symbols, clean_newline
 from ..spaces_cleaner import clean_spaces
 from ..stopword_remover.es import remove_stopwords
 from ..lemmatizer.es import lemmatize
@@ -21,7 +21,7 @@ def full_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_cases, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, remove_stopwords, fix_spelling, lemmatize)
+    return clean(text, clean_cases, clean_newline, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, remove_stopwords, fix_spelling, lemmatize)
 
 
 def soft_clean(text):
@@ -33,4 +33,4 @@ def soft_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_spaces, clean_invalid_symbols, clean_repeated_symbols, clean_cases, fix_spelling)
+    return clean(text, clean_newline, clean_spaces, clean_invalid_symbols, clean_repeated_symbols, clean_cases, fix_spelling)
