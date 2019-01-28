@@ -14,6 +14,7 @@ Includes:
 Avalable utilities:
 
 * `clean_cases`
+* `split_camel_cased`
 * `clean_invalid_symbols`
 * `clean_repeated_symbols`
 * `clean_spaces`

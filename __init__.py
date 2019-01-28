@@ -1,4 +1,4 @@
-from .case_cleaner import clean_cases
+from .case_cleaner import clean_cases, split_camel_cased
 from .symbol_cleaner import clean_invalid_symbols, clean_repeated_symbols, clean_newline
 from .spaces_cleaner import clean_spaces
 from .stopword_remover import en, es
