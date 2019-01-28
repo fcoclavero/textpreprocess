@@ -14,7 +14,8 @@ Includes:
 Avalable utilities:
 
 * `clean_cases`
-* `clean_symbols`
+* `clean_invalid_symbols`
+* `clean_repeated_symbols`
 * `clean_spaces`
 * `remove_stopwords`
 * `fix_spelling`
