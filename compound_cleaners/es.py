@@ -5,7 +5,8 @@ __status__ = "Prototype"
 
 from .common import clean
 from ..case_cleaner import clean_cases, split_camel_cased
-from ..symbol_cleaner import clean_invalid_symbols, clean_repeated_symbols, clean_newline
+from ..symbol_cleaner.common import clean_repeated_symbols, clean_newline
+from ..symbol_cleaner.es import clean_invalid_symbols
 from ..spaces_cleaner import clean_spaces
 from ..stopword_remover.es import remove_stopwords
 from ..lemmatizer.es import lemmatize
