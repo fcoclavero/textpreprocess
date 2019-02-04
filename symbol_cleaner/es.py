@@ -6,7 +6,7 @@ __status__ = "Prototype"
 import re, string
 
 
-whitelist = string.ascii_letters + string.digits + ' ,.!¡?¿' + 'ñáéíóúüÑÁÉÍÓÚÜ'
+whitelist = string.ascii_letters + ' ,.!¡?¿' + 'ñáéíóúüÑÁÉÍÓÚÜ'
 
 
 def clean_invalid_symbols(text):
