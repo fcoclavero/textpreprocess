@@ -22,7 +22,7 @@ def full_clean(text):
     :return: the clean text
     :type: string
     """
-    return clean(text, clean_newline, split_camel_cased, clean_cases, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, remove_stopwords, fix_spelling, lemmatize)
+    return clean(text, clean_newline, split_camel_cased, clean_cases, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, fix_spelling, remove_stopwords, lemmatize)
 
 
 def soft_clean(text):
