@@ -57,7 +57,7 @@ python setup.py
 ## Sample usage
 
 ```python
-from text_preprocess import full_clean, soft_clean
+from textpreprocess.compound_cleaners.en import full_clean, soft_clean
 
 text = '   thiss is a bery :''{ñdirti text!  '
 
