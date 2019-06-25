@@ -1,2 +1,2 @@
-CyHunspell==1.2.1 # imported as hunspell
+pyspellchecker==0.4.0
 nltk==3.3 # stopwords and wordnet corpus must be installed
