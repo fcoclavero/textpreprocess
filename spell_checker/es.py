@@ -21,8 +21,8 @@ class SpanishSpellCheckerSingleton(SpellChecker):
         """
         if SpanishSpellCheckerSingleton.__instance is None:
             SpanishSpellCheckerSingleton.__instance = SpanishSpellCheckerSingleton(
-                allowed_punctuation_marks=ES['ALLOWED_PUNCTUATION_MARKS'],
-                language=ES['PYSPELL_LANGUAGE']
+                language=ES['PYSPELL_LANGUAGE'],
+                allowed_punctuation_marks=ES['ALLOWED_PUNCTUATION_MARKS']
             )
         return SpanishSpellCheckerSingleton.__instance
 

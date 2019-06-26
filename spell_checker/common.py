@@ -5,8 +5,8 @@ __status__ = "Prototype"
 
 import re
 
-from nltk import edit_distance, word_tokenize
-from spellchecker import SpellChecker
+from nltk import word_tokenize
+from spellchecker import SpellChecker as PySpellChecker
 
 
 class SpellChecker:
@@ -22,13 +22,14 @@ class SpellChecker:
         self.language = language
         self.allowed_punctuation_marks = allowed_punctuation_marks
         self.spell = None
+        self.refresh_dict()
 
 
     def refresh_dict(self):
         """
         Create a new SpellChecker object from the specified dictionary file.
         """
-        self.spell = SpellChecker(language=self.language)
+        self.spell = PySpellChecker(language=self.language)
 
 
     def is_punctuation_mark(self, word):
@@ -71,12 +72,7 @@ class SpellChecker:
         :type: string
         :return: the same string if it is a punctuation mark, otherwise the top pyspellchecker suggestion.
         """
-        suggestion = ''
-        try:
-            suggestion = word if self.is_punctuation_mark(word) else self.spell.correction(word)
-        except AttributeError:
-            pass
-        return suggestion
+        return word if self.is_punctuation_mark(word) else self.spell.correction(word)
 
 
     def fix_text(self, text):
