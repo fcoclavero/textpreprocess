@@ -1,6 +1,3 @@
 [submodule "lemmas"]
 	path = lemmas
 	url = https://github.com/fcoclavero/lemmas
-[submodule "dictionaries"]
-	path = dictionaries
-	url = https://github.com/wooorm/dictionaries
