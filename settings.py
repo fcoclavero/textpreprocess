@@ -1,9 +1,9 @@
 EN = {
     'ALLOWED_PUNCTUATION_MARKS': '.,!?;',
-    'DICTIONARY_DIRECTORY': 'textpreprocess/dictionaries/dictionaries/en-US'
+    'PYSPELL_LANGUAGE': 'en'
 }
 ES = {
     'ALLOWED_PUNCTUATION_MARKS': '.,!?;',
-    'DICTIONARY_DIRECTORY': 'textpreprocess/dictionaries/dictionaries/es',
+    'PYSPELL_LANGUAGE': 'es',
     'LEMMAS_PATH': 'textpreprocess/lemmas/es.json'
 }

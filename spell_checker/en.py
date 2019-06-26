@@ -22,7 +22,7 @@ class EnglishSpellCheckerSingleton(SpellChecker):
         if EnglishSpellCheckerSingleton.__instance is None:
             EnglishSpellCheckerSingleton.__instance = EnglishSpellCheckerSingleton(
                 allowed_punctuation_marks=EN['ALLOWED_PUNCTUATION_MARKS'],
-                dictionary_directory=EN['DICTIONARY_DIRECTORY']
+                language=EN['PYSPELL_LANGUAGE']
             )
         return EnglishSpellCheckerSingleton.__instance
 

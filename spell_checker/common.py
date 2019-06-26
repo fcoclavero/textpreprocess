@@ -5,31 +5,30 @@ __status__ = "Prototype"
 
 import re
 
-from hunspell import Hunspell
 from nltk import edit_distance, word_tokenize
+from spellchecker import SpellChecker
 
 
 class SpellChecker:
     """
-    Class for managing spell checking using Hunspell. Implemented as a class, as multiple instances of a SpellChecker
-    might be used to maintain different dictionaries simultaneously (for example adding custom words).
+    Class for managing spell checking using pyspellchecker. Implemented as a class, as multiple SpellChecker instances
+    might be used to maintain different dictionaries simultaneously.
     """
 
-    def __init__(self, allowed_punctuation_marks, dictionary_directory):
+    def __init__(self, language, allowed_punctuation_marks):
         """
         Constructor method. Declares and creates a new Hunspell object.
         """
+        self.language = language
         self.allowed_punctuation_marks = allowed_punctuation_marks
-        self.dictionary_directory = dictionary_directory
-        self.hunspell = None
-        self.refresh_dict()
+        self.spell = None
 
 
     def refresh_dict(self):
         """
-        Create a new Hunspell object from the specified dictionary file.
+        Create a new SpellChecker object from the specified dictionary file.
         """
-        self.hunspell = Hunspell('index', hunspell_data_dir=self.dictionary_directory)
+        self.spell = SpellChecker(language=self.language)
 
 
     def is_punctuation_mark(self, word):
@@ -51,20 +50,18 @@ class SpellChecker:
         :return: boolean indicating if the spelling of the word is correct
         :type: boolean
         """
-        return self.hunspell.spell(word)
+        return len(self.spell.spell.known([word])) # if word correctly spelled, known will be a list containing `word`
 
 
     def suggest(self, word):
         """
-        Suggest similar and correctly spelled alternatives for the given string. Orders Hunspell suggestions by
-        edit distance.
+        Suggest similar and correctly spelled alternatives for the given string.
         :param word: a string with a single word
         :type: string
         :return: a list of suggestions
         :type: list<string>
         """
-        suggestions = self.hunspell.suggest(word)
-        return sorted(suggestions, key = lambda suggestion: edit_distance(word, suggestion))
+        return self.spell.candidates(word)
 
 
     def fix(self, word):
@@ -72,9 +69,14 @@ class SpellChecker:
         Fixes the spelling of the given word.
         :param word: a string with a single word
         :type: string
-        :return: the same word if correctly spelled or a punctuation mark, otherwise the top Hunspell suggestion.
+        :return: the same string if it is a punctuation mark, otherwise the top pyspellchecker suggestion.
         """
-        return word if self.is_punctuation_mark(word) or self.is_correctly_spelled(word) else self.suggest(word)[0]
+        suggestion = ''
+        try:
+            suggestion = word if self.is_punctuation_mark(word) else self.spell.correction(word)
+        except AttributeError:
+            pass
+        return suggestion
 
 
     def fix_text(self, text):
