@@ -7,7 +7,7 @@ import json
 
 from nltk import word_tokenize
 
-from ..settings import ES
+from settings import ES
 
 
 # Load spanish lemmas dictionary

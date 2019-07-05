@@ -3,8 +3,8 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from .common import SpellChecker
-from ..settings import EN
+from spell_checker.common import SpellChecker
+from settings import EN
 
 
 class EnglishSpellCheckerSingleton(SpellChecker):

@@ -6,6 +6,7 @@ __status__ = "Prototype"
 import re
 
 from nltk import word_tokenize
+
 from spellchecker import SpellChecker as PySpellChecker
 
 
@@ -29,7 +30,7 @@ class SpellChecker:
         """
         Create a new SpellChecker object from the specified dictionary file.
         """
-        self.spell = PySpellChecker(language=self.language)
+        self.spell = PySpellChecker(language=self.language, distance=1)
 
 
     def is_punctuation_mark(self, word):

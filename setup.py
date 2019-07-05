@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="textpreprocess",
-    version="0.0.1",
+    version="0.1.0",
     author="Francisco Clavero",
     author_email="fcoclavero32@gmail.com",
     description="Python package for natural language pre-processing.",

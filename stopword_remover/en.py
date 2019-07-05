@@ -5,7 +5,7 @@ __status__ = "Prototype"
 
 from nltk.corpus import stopwords
 
-from .common import remove_stopwords_set
+from stopword_remover.common import remove_stopwords_set
 
 
 def remove_stopwords(sentence):
