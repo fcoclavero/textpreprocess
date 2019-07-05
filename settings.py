@@ -1,3 +1,6 @@
+import os
+
+
 EN = {
     'ALLOWED_PUNCTUATION_MARKS': '.,!?;',
     'PYSPELL_LANGUAGE': 'en'
@@ -5,5 +8,5 @@ EN = {
 ES = {
     'ALLOWED_PUNCTUATION_MARKS': '.,!?;',
     'PYSPELL_LANGUAGE': 'es',
-    'LEMMAS_PATH': 'textpreprocess/lemmas/es.json'
+    'LEMMAS_PATH': os.path.join(os.path.dirname(__file__), 'lemmas', 'es.json')
 }
