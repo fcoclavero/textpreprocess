@@ -3,14 +3,14 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from compound_cleaners.common import clean
-from case_cleaner import clean_cases, split_camel_cased
-from symbol_cleaner.common import clean_repeated_symbols, clean_newline
-from symbol_cleaner.en import clean_invalid_symbols, expand_contractions
-from spaces_cleaner import clean_spaces
-from stopword_remover.en import remove_stopwords
-from lemmatizer.en import lemmatize
-from spell_checker.en import fix_spelling
+from .common import clean
+from ..case_cleaner import clean_cases, split_camel_cased
+from ..symbol_cleaner.common import clean_repeated_symbols, clean_newline
+from ..symbol_cleaner.en import clean_invalid_symbols, expand_contractions
+from ..spaces_cleaner import clean_spaces
+from ..stopword_remover.en import remove_stopwords
+from ..lemmatizer.en import lemmatize
+from ..spell_checker.en import fix_spelling
 
 
 def full_clean(text):
