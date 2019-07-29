@@ -14,7 +14,7 @@ class SpanishSpellCheckerSingleton(SpellChecker):
     __instance = None
 
     @staticmethod
-    def getInstance():
+    def get_instance():
         """
         Static access method for singleton pattern.
         :return: SpanishSpellCheckerSingleton
@@ -36,4 +36,4 @@ def fix_spelling(text):
     :return: spell-checked text
     :type: string
     """
-    return SpanishSpellCheckerSingleton.getInstance().fix_text(text)
+    return SpanishSpellCheckerSingleton.get_instance().fix_text(text)
