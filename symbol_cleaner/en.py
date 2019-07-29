@@ -8,7 +8,7 @@ import re, string
 from functools import reduce
 
 
-whitelist = string.ascii_letters# + ' ,.!?'
+whitelist = string.ascii_letters + ' ,.!?'
 
 contractions = [
     # specific
