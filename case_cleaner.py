@@ -19,7 +19,7 @@ def clean_cases(text):
 
 def split_camel_cased(text):
     """
-    Split camelCased elemets with a space.
+    Split camelCased elements with a space.
     :param text: the text to be converted processed.
     :type: string
     :return: text with all camelCased elements split into different elements

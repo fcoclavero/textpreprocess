@@ -4,14 +4,14 @@ Python package for natural language pre-processing with nltk and Hunspell.
 
 Includes:
 
-1. Standarizing cases
-2. Standarizing symbols
+1. Standardizing cases
+2. Standardizing symbols
 3. Removing extra whitespaces
-4. Stopword removal
+4. Stopwords removal
 5. Simple spelling corrections
 6. Lemmatization
 
-Avalable utilities:
+Available utilities:
 
 * `clean_cases`
 * `split_camel_cased`

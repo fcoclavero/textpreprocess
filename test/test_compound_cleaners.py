@@ -1,9 +1,10 @@
 from datetime import datetime
 
 
+# noinspection SpellCheckingInspection
 def test_english():
-    from compound_cleaners.en import full_clean
-    from compound_cleaners.en import soft_clean
+    from ..compound_cleaners.en import full_clean
+    from ..compound_cleaners.en import soft_clean
 
     start = datetime.now()
 
@@ -21,9 +22,10 @@ def test_english():
     print('Soft clean: %s' % text_soft_clean)
 
 
+# noinspection SpellCheckingInspection
 def test_spanish():
-    from compound_cleaners.es import full_clean
-    from compound_cleaners.es import soft_clean
+    from ..compound_cleaners.es import full_clean
+    from ..compound_cleaners.es import soft_clean
 
     start = datetime.now()
 
