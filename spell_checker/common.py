@@ -37,9 +37,9 @@ class SpellChecker:
         """
         Checks if the given word corresponds to one of the allowed punctuation marks.
         :param word: a string with a single word
-        :type: string
+        :type: str
         :return: boolean indicating if the given word is an allowed punctuation mark
-        :type: boolean
+        :type: bool
         """
         return bool(re.match(r'[%s]' % self.allowed_punctuation_marks, word))
 
@@ -48,9 +48,9 @@ class SpellChecker:
         """
         Checks if the given word is correctly spelled.
         :param word: a string with a single word
-        :type: string
+        :type: str
         :return: boolean indicating if the spelling of the word is correct
-        :type: boolean
+        :type: bool
         """
         return len(self.spell.spell.known([word])) # if word correctly spelled, known will be a list containing `word`
 
@@ -59,9 +59,9 @@ class SpellChecker:
         """
         Suggest similar and correctly spelled alternatives for the given string.
         :param word: a string with a single word
-        :type: string
+        :type: str
         :return: a list of suggestions
-        :type: list<string>
+        :type: List[str]
         """
         return self.spell.candidates(word)
 
@@ -70,7 +70,7 @@ class SpellChecker:
         """
         Fixes the spelling of the given word.
         :param word: a string with a single word
-        :type: string
+        :type: str
         :return: the same string if it is a punctuation mark, otherwise the top pyspellchecker suggestion.
         """
         return word if self.is_punctuation_mark(word) else self.spell.correction(word)
@@ -80,7 +80,7 @@ class SpellChecker:
         """
         Fixes the spelling of a multi-worded phrase.
         :param text: the phrase string
-        :type: string
+        :type: str
         :return: the same phrase, with the spelling of each word fixed.
         """
         fixed_text = ' '.join([self.fix(word) for word in word_tokenize(text)])

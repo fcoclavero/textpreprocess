@@ -19,9 +19,9 @@ def lemma(word):
     Transforms a given word to its lemmatized form, checking a lemma dictionary. If the word is
     not included in the dictionary, the same word is returned.
     :param word: string containing a single word
-    :type: string
+    :type: str
     :return: the word's lemma
-    :type: string
+    :type: str
     """
     return lemmas[word] if word in lemmas else word
 
@@ -30,8 +30,8 @@ def lemmatize(sentence):
     """
     Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
     :param sentence: the text to be lemmatized
-    :type: string
+    :type: str
     :return: lemmatized text
-    :type: string
+    :type: str
     """
     return ' '.join([lemma(word) for word in word_tokenize(sentence)])

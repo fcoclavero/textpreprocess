@@ -5,8 +5,8 @@ def clean(text, *cleaners):
     """
     Cleans the given text using the provided cleaning functions.
     :param text: the text to be cleaned
-    :type: string
+    :type: str
     :return: the clean text
-    :type: string
+    :type: str
     """
     return reduce(lambda part, func: func(part), cleaners, text)

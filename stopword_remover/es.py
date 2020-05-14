@@ -12,8 +12,8 @@ def remove_stopwords(sentence):
     """
     Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
     :param sentence: the text from which stopwords will be removed
-    :type: string
+    :type: str
     :return: lemmatized text
-    :type: string
+    :type: str
     """
     return remove_stopwords_set(sentence, set(stopwords.words('spanish')))

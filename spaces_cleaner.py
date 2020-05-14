@@ -10,8 +10,8 @@ def clean_spaces(text):
     """
     Removes any consecutive white spaces in the text, as well as preceding and trailing whitespaces.
     :param text: the text to be filtered
-    :type: string
+    :type: str
     :return: the filtered text
-    :type: string
+    :type: str
     """
     return re.sub(' +', ' ', text).strip() # strip removes characters from beginning and end, with whitespace as default

@@ -18,9 +18,9 @@ def full_clean(text):
     Cleans text with all available processes: lower casing, symbol cleaning, spaces cleaning, stop-word removal,
     spell checking and lemmatization.
     :param text: the text to be cleaned
-    :type: string
+    :type: str
     :return: the clean text
-    :type: string
+    :type: str
     """
     return clean(text, clean_newline, split_camel_cased, clean_cases, expand_contractions, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, fix_spelling, remove_stopwords, lemmatize)
 
@@ -30,8 +30,8 @@ def soft_clean(text):
     Cleans text with the preprocessors that do not modify the syntax and semantics of the text: lower casing,
     spaces cleaning, symbol cleaning, and spell checking.
     :param text: the text to be cleaned
-    :type: string
+    :type: str
     :return: the clean text
-    :type: string
+    :type: str
     """
     return clean(text, clean_newline, split_camel_cased, clean_cases, clean_invalid_symbols, clean_repeated_symbols, clean_spaces, fix_spelling)

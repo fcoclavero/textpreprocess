@@ -21,7 +21,7 @@ def wordnet_pos(tag):
     """
     Transforms nltk part-of-speech tag strings to wordnet part-of-speech tag string.
     :param tag: nltk part-of-speech tag string
-    :type: string
+    :type: str
     :return: the corresponding wordnet tag
     :type: wordnet part-of-speech tag string
     """
@@ -32,8 +32,8 @@ def lemmatize(sentence):
     """
     Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
     :param sentence: the text to be lemmatized
-    :type: string
+    :type: str
     :return: lemmatized text
-    :type: string
+    :type: str
     """
     return ' '.join([WordNetLemmatizer().lemmatize(word, wordnet_pos(tag)) for word, tag in pos_tag(word_tokenize(sentence))])

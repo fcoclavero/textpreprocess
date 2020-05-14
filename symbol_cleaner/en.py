@@ -30,9 +30,9 @@ def clean_invalid_symbols(text):
     """
     Filters text, leaving only valid characters, digits and spaces.
     :param text: the text to be filtered
-    :type: string
+    :type: str
     :return: the filtered text
-    :type: string
+    :type: str
     """
     return re.sub(r'[^%s]' % whitelist, '', text)
 
@@ -41,9 +41,9 @@ def expand_contractions(text):
     """
     Filters text, expanding all contractions defined in the 'contractions' variable.
     :param text: the text to be filtered
-    :type: string
+    :type: str
     :return: the filtered text
-    :type: string
+    :type: str
     """
     return reduce(
         lambda partial_text, contraction: re.sub(contraction[0], contraction[1], partial_text),

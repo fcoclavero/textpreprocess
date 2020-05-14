@@ -32,8 +32,8 @@ def fix_spelling(text):
     """
     Tries to correct the spelling of the given text.
     :param text: the text to spell-checked
-    :type: string
+    :type: str
     :return: spell-checked text
-    :type: string
+    :type: str
     """
     return EnglishSpellCheckerSingleton.get_instance().fix_text(text)
