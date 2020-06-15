@@ -7,7 +7,7 @@ import re
 import string
 
 
-whitelist = string.ascii_letters + 'ñáéíóúüÑÁÉÍÓÚÜ' + ' ,.!¡?¿'
+whitelist = string.ascii_letters + "ñáéíóúüÑÁÉÍÓÚÜ" + " ,.!¡?¿"
 
 
 def clean_invalid_symbols(text):
@@ -18,4 +18,4 @@ def clean_invalid_symbols(text):
     :return: the filtered text
     :type: str
     """
-    return re.sub(r'[^%s]' % whitelist, '', text)
+    return re.sub(r"[^%s]" % whitelist, "", text)

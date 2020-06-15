@@ -9,7 +9,7 @@ import string
 from functools import reduce
 
 
-whitelist = string.ascii_letters + ' ,.!?'
+whitelist = string.ascii_letters + " ,.!?"
 
 contractions = [
     # specific
@@ -23,7 +23,7 @@ contractions = [
     (r"\'ll", " will"),
     (r"\'t", " not"),
     (r"\'ve", " have"),
-    (r"\'m", " am")
+    (r"\'m", " am"),
 ]
 
 
@@ -35,7 +35,7 @@ def clean_invalid_symbols(text):
     :return: the filtered text
     :type: str
     """
-    return re.sub(r'[^%s]' % whitelist, '', text)
+    return re.sub(r"[^%s]" % whitelist, "", text)
 
 
 def expand_contractions(text):
@@ -47,7 +47,5 @@ def expand_contractions(text):
     :type: str
     """
     return reduce(
-        lambda partial_text, contraction: re.sub(contraction[0], contraction[1], partial_text),
-        contractions,
-        text
+        lambda partial_text, contraction: re.sub(contraction[0], contraction[1], partial_text), contractions, text
     )
