@@ -6,7 +6,6 @@ __status__ = "Prototype"
 import re
 
 from nltk import word_tokenize
-
 from spellchecker import SpellChecker as PySpellChecker
 
 
@@ -25,13 +24,11 @@ class SpellChecker:
         self.spell = None
         self.refresh_dict()
 
-
     def refresh_dict(self):
         """
         Create a new SpellChecker object from the specified dictionary file.
         """
         self.spell = PySpellChecker(language=self.language, distance=1)
-
 
     def is_punctuation_mark(self, word):
         """
@@ -41,8 +38,7 @@ class SpellChecker:
         :return: boolean indicating if the given word is an allowed punctuation mark
         :type: bool
         """
-        return bool(re.match(r'[%s]' % self.allowed_punctuation_marks, word))
-
+        return bool(re.match(r"[%s]" % self.allowed_punctuation_marks, word))
 
     def is_correctly_spelled(self, word):
         """
@@ -52,8 +48,7 @@ class SpellChecker:
         :return: boolean indicating if the spelling of the word is correct
         :type: bool
         """
-        return len(self.spell.spell.known([word])) # if word correctly spelled, known will be a list containing `word`
-
+        return len(self.spell.spell.known([word]))  # if word correctly spelled, known will be a list containing `word`
 
     def suggest(self, word):
         """
@@ -65,7 +60,6 @@ class SpellChecker:
         """
         return self.spell.candidates(word)
 
-
     def fix(self, word):
         """
         Fixes the spelling of the given word.
@@ -75,7 +69,6 @@ class SpellChecker:
         """
         return word if self.is_punctuation_mark(word) else self.spell.correction(word)
 
-
     def fix_text(self, text):
         """
         Fixes the spelling of a multi-worded phrase.
@@ -83,5 +76,7 @@ class SpellChecker:
         :type: str
         :return: the same phrase, with the spelling of each word fixed.
         """
-        fixed_text = ' '.join([self.fix(word) for word in word_tokenize(text)])
-        return re.sub(r' ([%s])' % self.allowed_punctuation_marks, r'\1', fixed_text) # remove spaces preceding punctuation
+        fixed_text = " ".join([self.fix(word) for word in word_tokenize(text)])
+        return re.sub(
+            r" ([%s])" % self.allowed_punctuation_marks, r"\1", fixed_text
+        )  # remove spaces preceding punctuation

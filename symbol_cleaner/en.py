@@ -3,7 +3,8 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-import re, string
+import re
+import string
 
 from functools import reduce
 

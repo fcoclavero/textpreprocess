@@ -3,14 +3,15 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from .common import SpellChecker
 from ..settings import EN
+from .common import SpellChecker
 
 
 class EnglishSpellCheckerSingleton(SpellChecker):
     """
     Utility class to manage a single SpellChecker instance for english.
     """
+
     __instance = None
 
     @staticmethod
@@ -21,11 +22,9 @@ class EnglishSpellCheckerSingleton(SpellChecker):
         """
         if EnglishSpellCheckerSingleton.__instance is None:
             EnglishSpellCheckerSingleton.__instance = EnglishSpellCheckerSingleton(
-                language=EN['PYSPELL_LANGUAGE'],
-                allowed_punctuation_marks=EN['ALLOWED_PUNCTUATION_MARKS']
+                language=EN["PYSPELL_LANGUAGE"], allowed_punctuation_marks=EN["ALLOWED_PUNCTUATION_MARKS"]
             )
         return EnglishSpellCheckerSingleton.__instance
-
 
 
 def fix_spelling(text):

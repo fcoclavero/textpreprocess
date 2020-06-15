@@ -3,18 +3,14 @@ __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
 
-from nltk import pos_tag, word_tokenize
+from nltk import pos_tag
+from nltk import word_tokenize
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
 
 # Equivalences between the first character of an nltk part-of-speech tag and wordnet POS tag.
-nltk_wordnet_pos_dict = {
-    'J': wordnet.ADJ,
-    'N': wordnet.NOUN,
-    'V': wordnet.VERB,
-    'R': wordnet.ADV
-}
+nltk_wordnet_pos_dict = {"J": wordnet.ADJ, "N": wordnet.NOUN, "V": wordnet.VERB, "R": wordnet.ADV}
 
 
 def wordnet_pos(tag):
@@ -25,7 +21,7 @@ def wordnet_pos(tag):
     :return: the corresponding wordnet tag
     :type: wordnet part-of-speech tag string
     """
-    return getattr(nltk_wordnet_pos_dict, tag[0], nltk_wordnet_pos_dict['N']) # 'N' is the wordnet default
+    return getattr(nltk_wordnet_pos_dict, tag[0], nltk_wordnet_pos_dict["N"])  # 'N' is the wordnet default
 
 
 def lemmatize(sentence):
@@ -36,4 +32,6 @@ def lemmatize(sentence):
     :return: lemmatized text
     :type: str
     """
-    return ' '.join([WordNetLemmatizer().lemmatize(word, wordnet_pos(tag)) for word, tag in pos_tag(word_tokenize(sentence))])
+    return " ".join(
+        [WordNetLemmatizer().lemmatize(word, wordnet_pos(tag)) for word, tag in pos_tag(word_tokenize(sentence))]
+    )
