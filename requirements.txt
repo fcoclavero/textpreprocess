@@ -1,2 +1,2 @@
-pyspellchecker==0.5.2
+pyspellchecker==0.5.4
 nltk==3.5 # stopwords and wordnet corpus must be installed
