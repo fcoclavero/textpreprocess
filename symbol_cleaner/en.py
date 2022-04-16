@@ -1,17 +1,19 @@
 __author__ = ["Francisco Clavero"]
+__description__ = "Text cleaner functions that remove symbols for the `en` language."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
-
 
 import re
 import string
 
 from functools import reduce
+from typing import List, Tuple
 
 
-whitelist = string.ascii_letters + " ,.!?"
+WHITELIST: str = string.ascii_letters + " ,.!?"
+"""Symbols that won't be filtered."""
 
-contractions = [
+CONTRACTIONS: List[Tuple[str, str]] = [
     # specific
     (r"won\'t", "will not"),
     (r"can\'t", "can not"),
@@ -25,27 +27,38 @@ contractions = [
     (r"\'ve", " have"),
     (r"\'m", " am"),
 ]
+"""List of tuples containing the allowed contractions and their expansion."""
 
 
-def clean_invalid_symbols(text):
+def clean_invalid_symbols(text: str) -> str:
+    """Filters text, leaving only valid characters, digits and spaces.
+
+    Arguments:
+
+    Arguments:
+        text:
+            The text to be filtered.
+
+    Returns:
+        The filtered text.
     """
-    Filters text, leaving only valid characters, digits and spaces.
-    :param text: the text to be filtered
-    :type: str
-    :return: the filtered text
-    :type: str
-    """
-    return re.sub(r"[^%s]" % whitelist, "", text)
+    return re.sub(r"[^%s]" % WHITELIST, "", text)
 
 
-def expand_contractions(text):
-    """
-    Filters text, expanding all contractions defined in the 'contractions' variable.
-    :param text: the text to be filtered
-    :type: str
-    :return: the filtered text
-    :type: str
+def expand_contractions(text: str) -> str:
+    """Filters text, expanding all contractions defined in the 'CONTRACTIONS' variable.
+
+    Arguments:
+        text:
+            The text to be filtered.
+
+    Returns:
+        The filtered text.
     """
     return reduce(
-        lambda partial_text, contraction: re.sub(contraction[0], contraction[1], partial_text), contractions, text
+        lambda partial_text, contraction: re.sub(
+            contraction[0], contraction[1], partial_text
+        ),
+        CONTRACTIONS,
+        text,
     )

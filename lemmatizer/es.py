@@ -1,37 +1,46 @@
 __author__ = ["Francisco Clavero"]
+__description__ = "Functions to lemmatize text for the `es` language."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
-
 import json
+
+from typing import Dict
 
 from nltk import word_tokenize
 
 from ..settings import ES
 
 
-# Load spanish lemmas dictionary
-lemmas = json.load(open(ES['LEMMAS_PATH'], 'r', encoding='latin-1'))
+LEMMAS: Dict[str, str] = json.load(open(ES["LEMMAS_PATH"], "r", encoding="latin-1"))
+"""Spanish lemmas dictionary."""
 
 
-def lemma(word):
+def lemma(word: str) -> str:
+    """Transforms a given word to its lemmatized form, checking the lemma dictionary.
+
+    If the word is not included in the dictionary, the same word is returned.
+
+    Arguments:
+        word:
+            String containing a single word.
+
+    Returns:
+        The word's lemma.
     """
-    Transforms a given word to its lemmatized form, checking a lemma dictionary. If the word is
-    not included in the dictionary, the same word is returned.
-    :param word: string containing a single word
-    :type: str
-    :return: the word's lemma
-    :type: str
-    """
-    return lemmas[word] if word in lemmas else word
+    return LEMMAS[word] if word in LEMMAS else word
 
 
-def lemmatize(sentence):
+def lemmatize(sentence: str) -> str:
+    """Transforms a given text to its lemmatized form.
+
+    Assumes clean text separated by spaces.
+
+    Arguments:
+        sentence:
+            The text to be lemmatized.
+
+    Returns:
+        The lemmatized text.
     """
-    Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
-    :param sentence: the text to be lemmatized
-    :type: str
-    :return: lemmatized text
-    :type: str
-    """
-    return ' '.join([lemma(word) for word in word_tokenize(sentence)])
+    return " ".join([lemma(word) for word in word_tokenize(sentence)])

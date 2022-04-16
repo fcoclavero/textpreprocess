@@ -1,11 +1,16 @@
+__author__ = ["Francisco Clavero"]
+__description__ = "Build setup for the package."
+__email__ = ["fcoclavero32@gmail.com"]
+__status__ = "Prototype"
+
 import nltk, setuptools
 
-# download required nltk corpus
+# Download required nltk corpus.
 
 nltk.download("wordnet")
 nltk.download("stopwords")
 
-# tell setuptools about the package
+# Tell `setuptools` about the package.
 
 with open("README.md", "r") as fh:
     long_description = fh.read()

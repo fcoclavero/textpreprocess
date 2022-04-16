@@ -1,19 +1,23 @@
 __author__ = ["Francisco Clavero"]
+__description__ = "Stopword remover functions for the `es` language."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
-
 
 from nltk.corpus import stopwords
 
 from .common import remove_stopwords_set
 
 
-def remove_stopwords(sentence):
+def remove_stopwords(sentence: str) -> str:
+    """Transforms a given text to its lemmatized form.
+
+    Assumes clean text separated by spaces.
+
+    Arguments:
+        sentence:
+            the text from which stopwords will be removed.
+
+    Returns:
+        The lemmatized text.
     """
-    Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
-    :param sentence: the text from which stopwords will be removed
-    :type: str
-    :return: lemmatized text
-    :type: str
-    """
-    return remove_stopwords_set(sentence, set(stopwords.words('spanish')))
+    return remove_stopwords_set(sentence, set(stopwords.words("spanish")))

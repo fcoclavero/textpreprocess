@@ -1,4 +1,4 @@
 __author__ = ["Francisco Clavero"]
-__description__ = "Functions to lemmatize text."
+__description__ = "Text cleaner functions that remove symbols."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"

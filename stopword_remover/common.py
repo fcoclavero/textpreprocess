@@ -1,19 +1,25 @@
 __author__ = ["Francisco Clavero"]
+__description__ = "Common stopword remover functions."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
+from typing import Collection
 
 from nltk import word_tokenize
 
 
-def remove_stopwords_set(sentence, stop_words):
+def remove_stopwords_set(sentence: str, stop_words: Collection[str]) -> str:
+    """Transforms a given text to its lemmatized form.
+
+    Assumes clean text separated by spaces.
+
+    Arguments:
+        sentence:
+            The text from which stopwords will be removed.
+        stop_words:
+            A collection of stop words for the same language as the sentence.
+
+    Returns:
+        The lemmatized text.
     """
-    Transforms a given text to its lemmatized form. Assumes clean text separated by spaces.
-    :param sentence: the text from which stopwords will be removed
-    :type: str
-    :param stop_words: a set with stop words for the same language as the sentence
-    :type: str
-    :return: lemmatized text
-    :type: str
-    """
-    return ' '.join([w for w in word_tokenize(sentence) if not w in stop_words])
+    return " ".join([w for w in word_tokenize(sentence) if w not in stop_words])
