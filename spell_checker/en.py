@@ -10,7 +10,8 @@ from .common import SpellChecker
 class EnglishSpellCheckerSingleton(SpellChecker):
     """Utility class to manage a single `SpellChecker` instance for english."""
 
-    __instance = None
+    __instance: "EnglishSpellCheckerSingleton" = None
+    """The singleton instance."""
 
     @staticmethod
     def get_instance() -> "EnglishSpellCheckerSingleton":
