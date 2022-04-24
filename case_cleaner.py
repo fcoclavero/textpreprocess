@@ -19,12 +19,25 @@ def clean_cases(text: str) -> str:
     return text.lower()
 
 
+def kebab_to_snake_case(text: str) -> str:
+    """Convert a kebab-cased-text to snake_case.
+
+    Arguments:
+        text:
+            The text to be converted to snake case. Must be valid kebab case.
+
+    Returns:
+        The text in kebab case form.
+    """
+    return text.replace("-", "_")
+
+
 def split_camel_cased(text: str) -> str:
     """Split camelCased elements with a space.
 
     Arguments:
         text:
-            The text to be converted processed.
+            The text to be processed.
 
     Returns:
         The text with all camelCased elements split into different elements.
