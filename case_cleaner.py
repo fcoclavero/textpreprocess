@@ -19,6 +19,20 @@ def clean_cases(text: str) -> str:
     return text.lower()
 
 
+def camel_to_snake_case(camel_cased_string: str) -> str:
+    """Convert the format of the given string from CamelCase to snake_case.
+
+    Arguments:
+        camel_cased_string:
+            The string in CamelCase format.
+
+    Returns:
+        The same string, but in snake_case format.
+
+    """
+    return re.sub(r"(?<!^)(?=[A-Z])", "_", camel_cased_string).lower()
+
+
 def kebab_to_snake_case(text: str) -> str:
     """Convert a kebab-cased-text to snake_case.
 
