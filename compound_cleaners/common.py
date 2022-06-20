@@ -3,7 +3,6 @@ __description__ = "Common complex cleaners."
 __email__ = ["fcoclavero32@gmail.com"]
 __status__ = "Prototype"
 
-
 from functools import reduce
 from typing import Callable
 
